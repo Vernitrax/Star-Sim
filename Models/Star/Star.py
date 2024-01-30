@@ -11,7 +11,7 @@ class Star:
     _cycles_to_supernova = 100
 
     def __new__(cls):
-        raise Exception('Cannot create more stars, sorry :(\nUse Star.instance instead!')
+        raise TypeError('Cannot create more stars, sorry :(\nUse Star.instance instead!')
 
     @classmethod
     def instance(cls):
@@ -26,6 +26,7 @@ class Star:
             )
             choice = star_selection[0]
             cls._name, cls._type, cls._cycles_to_supernova = 'Red Sun', choice[0], choice[1]
+            cls._instance = True
         return cls
 
     @classmethod
