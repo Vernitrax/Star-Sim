@@ -6,7 +6,7 @@ import random
 
 from abc import ABC, abstractmethod
 
-from Planet import RockPlanet, GasPlanet
+from Planet import Planet, RockPlanet, GasPlanet
 from PlanetModifier import SentientLifePlanetModifier, RichMineralsPlanetModifier
 
 
@@ -22,7 +22,7 @@ class PlanetFactory(ABC):
     max_size: int
 
     @abstractmethod
-    def factory_method(self):
+    def factory_method(self) -> Planet:
         pass
 
 
@@ -31,7 +31,7 @@ class BalancedPlanetFactory(PlanetFactory):
         self.min_size = 4
         self.max_size = 6
 
-    def factory_method(self):
+    def factory_method(self) -> Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, GasPlanet))
@@ -48,7 +48,7 @@ class SmallPlanetFactory(PlanetFactory):
         self.min_size = 2
         self.max_size = 4
 
-    def factory_method(self):
+    def factory_method(self) -> Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, RockPlanet, GasPlanet))
@@ -65,7 +65,7 @@ class BigPlanetFactory(PlanetFactory):
         self.min_size = 6
         self.max_size = 8
 
-    def factory_method(self):
+    def factory_method(self) -> Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, GasPlanet, GasPlanet))
