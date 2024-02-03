@@ -5,13 +5,21 @@ Implementation of PlanetModifier class
 from abc import ABC
 
 
-class Modifier(ABC):
+class PlanetModifier(ABC):
     pass
 
 
-class SentientLife(Modifier):
+class SentientLifePlanetModifier(PlanetModifier):
     pass
 
 
-class RichMinerals(Modifier):
+class RichMineralsPlanetModifier(PlanetModifier):
+    pass
+
+
+class RockPlanetModifier(PlanetModifier):
+    pass
+
+
+class GasPlanetModifier(PlanetModifier):
     pass
