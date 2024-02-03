@@ -7,7 +7,7 @@ import random
 from abc import ABC, abstractmethod
 
 from Planet import RockPlanet, GasPlanet
-from PlanetModifier import SentientLife, RichMinerals
+from PlanetModifier import SentientLifePlanetModifier, RichMineralsPlanetModifier
 
 
 planet_names = (
@@ -36,7 +36,7 @@ class BalancedPlanetFactory(PlanetFactory):
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLife, RichMinerals))
+        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
         if new_modifier is not None:
             product.modifiers.append(new_modifier())
             new_modifier.apply(product)
@@ -53,7 +53,7 @@ class SmallPlanetFactory(PlanetFactory):
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, RockPlanet, GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLife, RichMinerals))
+        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
         if new_modifier is not None:
             product.modifiers.append(new_modifier())
             new_modifier.apply(product)
@@ -70,7 +70,7 @@ class BigPlanetFactory(PlanetFactory):
         new_name = random.choice(planet_names)
         new_type = random.choice((RockPlanet, GasPlanet, GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLife, RichMinerals))
+        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
         if new_modifier is not None:
             product.modifiers.append(new_modifier())
             new_modifier.apply(product)
