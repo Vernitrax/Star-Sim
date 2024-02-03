@@ -43,8 +43,8 @@ class BalancedPlanetFactory(PlanetFactory):
                 PlanetModifier.RichMineralsPlanetModifier
             )
         )
-        new_modifier = new_modifier()
         if new_modifier is not None:
+            new_modifier = new_modifier()
             product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
@@ -67,8 +67,8 @@ class SmallPlanetFactory(PlanetFactory):
                 PlanetModifier.RichMineralsPlanetModifier
             )
         )
-        new_modifier = new_modifier()
         if new_modifier is not None:
+            new_modifier = new_modifier()
             product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
@@ -91,8 +91,8 @@ class BigPlanetFactory(PlanetFactory):
                 PlanetModifier.RichMineralsPlanetModifier
             )
         )
-        new_modifier = new_modifier()
         if new_modifier is not None:
+            new_modifier = new_modifier()
             product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
