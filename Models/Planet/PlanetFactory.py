@@ -41,3 +41,37 @@ class BalancedPlanetFactory(PlanetFactory):
             product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
+
+
+class SmallPlanetFactory(PlanetFactory):
+    def __init__(self):
+        self.min_size = 2
+        self.max_size = 4
+
+    def factory_method(self):
+        new_size = random.randint(self.min_size, self.max_size)
+        new_name = random.choice(planet_names)
+        new_type = random.choice((RockPlanet, RockPlanet, GasPlanet))
+        product = new_type(new_name, new_size)
+        new_modifier = random.choice((None, SentientLife, RichMinerals))
+        if new_modifier is not None:
+            product.modifiers.append(new_modifier)
+            new_modifier.apply(product)
+        return product
+
+
+class BigPlanetFactory(PlanetFactory):
+    def __init__(self):
+        self.min_size = 6
+        self.max_size = 8
+
+    def factory_method(self):
+        new_size = random.randint(self.min_size, self.max_size)
+        new_name = random.choice(planet_names)
+        new_type = random.choice((RockPlanet, GasPlanet, GasPlanet))
+        product = new_type(new_name, new_size)
+        new_modifier = random.choice((None, SentientLife, RichMinerals))
+        if new_modifier is not None:
+            product.modifiers.append(new_modifier)
+            new_modifier.apply(product)
+        return product
