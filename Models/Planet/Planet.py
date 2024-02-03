@@ -11,7 +11,7 @@ class Planet(ABC):
     name: str
     size: int
     is_colonized: bool = False
-    modifiers: list[PM.PlanetModifier, ...]
+    modifiers: list[PM.PlanetModifier, ...] = []
     # colony: Colony   todo replace with actual Colony implementation
 
     @abstractmethod
