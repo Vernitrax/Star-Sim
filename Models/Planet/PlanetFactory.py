@@ -55,7 +55,7 @@ class SmallPlanetFactory(PlanetFactory):
         product = new_type(new_name, new_size)
         new_modifier = random.choice((None, SentientLife, RichMinerals))
         if new_modifier is not None:
-            product.modifiers.append(new_modifier)
+            product.modifiers.append(new_modifier())
             new_modifier.apply(product)
         return product
 
@@ -72,6 +72,6 @@ class BigPlanetFactory(PlanetFactory):
         product = new_type(new_name, new_size)
         new_modifier = random.choice((None, SentientLife, RichMinerals))
         if new_modifier is not None:
-            product.modifiers.append(new_modifier)
+            product.modifiers.append(new_modifier())
             new_modifier.apply(product)
         return product
