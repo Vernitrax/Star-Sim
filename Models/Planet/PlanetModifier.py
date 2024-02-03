@@ -2,24 +2,75 @@
 Implementation of PlanetModifier class
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
+
+from Planet import Planet
 
 
+# todo make it more diverse once colony is implemented: affecting production, population etc.
 class PlanetModifier(ABC):
-    pass
+    name: str
+
+    @abstractmethod
+    def apply(self, planet: Planet) -> None:
+        pass
+
+    @abstractmethod
+    def remove(self, planet: Planet) -> None:
+        pass
 
 
 class SentientLifePlanetModifier(PlanetModifier):
-    pass
+    def __init__(self):
+        self.name = 'Sentient life present, less space for us. But they are cute!'
+
+    def apply(self, planet: Planet) -> None:
+        planet.size -= 2
+
+    def remove(self, planet: Planet) -> None:
+        # You. Monster.
+        planet.size += 2
 
 
 class RichMineralsPlanetModifier(PlanetModifier):
-    pass
+    def __init__(self):
+        self.name = 'Rich minerals, we can produce more thingies!'
+
+    def apply(self, planet: Planet) -> None:
+        planet.size += 1
+
+    def remove(self, planet: Planet) -> None:
+        planet.size -= 1
 
 
 class RockPlanetModifier(PlanetModifier):
-    pass
+    def __init__(self):
+        self.name = 'Rock planet, easy to live, hard to get resources'
+
+    def apply(self, planet: Planet) -> None:
+        planet.size += 1
+
+    def remove(self, planet: Planet) -> None:
+        planet.size -= 1
 
 
 class GasPlanetModifier(PlanetModifier):
-    pass
+    def __init__(self):
+        self.name = 'Gas planet, hard to live, easy to get resources'
+
+    def apply(self, planet: Planet) -> None:
+        planet.size -= 1
+
+    def remove(self, planet: Planet) -> None:
+        planet.size += 1
+
+
+class HomePlanetModifier(PlanetModifier):
+    def __init__(self):
+        self.name = 'Home world, morale boost included'
+
+    def apply(self, planet: Planet) -> None:
+        planet.size += 2
+
+    def remove(self, planet: Planet) -> None:
+        planet.size -= 2
