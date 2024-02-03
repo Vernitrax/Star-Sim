@@ -6,8 +6,8 @@ import random
 
 from abc import ABC, abstractmethod
 
-from Planet import Planet, RockPlanet, GasPlanet
-from PlanetModifier import SentientLifePlanetModifier, RichMineralsPlanetModifier
+from . import Planet
+from . import PlanetModifier
 
 
 planet_names = (
@@ -22,7 +22,7 @@ class PlanetFactory(ABC):
     max_size: int
 
     @abstractmethod
-    def factory_method(self) -> Planet:
+    def factory_method(self) -> Planet.Planet:
         pass
 
 
@@ -31,14 +31,21 @@ class BalancedPlanetFactory(PlanetFactory):
         self.min_size = 4
         self.max_size = 6
 
-    def factory_method(self) -> Planet:
+    def factory_method(self) -> Planet.Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
-        new_type = random.choice((RockPlanet, GasPlanet))
+        new_type = random.choice((Planet.RockPlanet, Planet.GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
+        new_modifier = random.choice(
+            (
+                None,
+                PlanetModifier.SentientLifePlanetModifier,
+                PlanetModifier.RichMineralsPlanetModifier
+            )
+        )
+        new_modifier = new_modifier()
         if new_modifier is not None:
-            product.modifiers.append(new_modifier())
+            product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
 
@@ -48,14 +55,21 @@ class SmallPlanetFactory(PlanetFactory):
         self.min_size = 2
         self.max_size = 4
 
-    def factory_method(self) -> Planet:
+    def factory_method(self) -> Planet.Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
-        new_type = random.choice((RockPlanet, RockPlanet, GasPlanet))
+        new_type = random.choice((Planet.RockPlanet, Planet.RockPlanet, Planet.GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
+        new_modifier = random.choice(
+            (
+                None,
+                PlanetModifier.SentientLifePlanetModifier,
+                PlanetModifier.RichMineralsPlanetModifier
+            )
+        )
+        new_modifier = new_modifier()
         if new_modifier is not None:
-            product.modifiers.append(new_modifier())
+            product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
 
@@ -65,13 +79,20 @@ class BigPlanetFactory(PlanetFactory):
         self.min_size = 6
         self.max_size = 8
 
-    def factory_method(self) -> Planet:
+    def factory_method(self) -> Planet.Planet:
         new_size = random.randint(self.min_size, self.max_size)
         new_name = random.choice(planet_names)
-        new_type = random.choice((RockPlanet, GasPlanet, GasPlanet))
+        new_type = random.choice((Planet.RockPlanet, Planet.GasPlanet, Planet.GasPlanet))
         product = new_type(new_name, new_size)
-        new_modifier = random.choice((None, SentientLifePlanetModifier, RichMineralsPlanetModifier))
+        new_modifier = random.choice(
+            (
+                None,
+                PlanetModifier.SentientLifePlanetModifier,
+                PlanetModifier.RichMineralsPlanetModifier
+            )
+        )
+        new_modifier = new_modifier()
         if new_modifier is not None:
-            product.modifiers.append(new_modifier())
+            product.modifiers.append(new_modifier)
             new_modifier.apply(product)
         return product
