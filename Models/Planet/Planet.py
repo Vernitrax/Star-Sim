@@ -1,5 +1,5 @@
 """
-Planet class implementation
+Implementation of Planet class
 """
 
 from abc import ABC, abstractmethod

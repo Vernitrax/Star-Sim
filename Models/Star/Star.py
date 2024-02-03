@@ -1,5 +1,5 @@
 """
-Star class implementation
+Implementation of Star class
 """
 
 
